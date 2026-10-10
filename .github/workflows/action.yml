@@ -1,0 +1,17 @@
+name: action
+
+on:
+  schedule:
+    - cron: '33 10 * * *'
+  workflow_dispatch:
+
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v7
+      - name: hello
+        run: |
+          echo "Hello, World!"
+          curl -sd "Hello, World!" https://ntfy.sh/sirenhornet/helloworld
